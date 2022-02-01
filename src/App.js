@@ -1,10 +1,11 @@
+import RouteApp from './routes';
 
-import './App.css';
+import './index.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Meu Link</h1>
+      <RouteApp />
     </div>
   );
 }
