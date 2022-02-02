@@ -1,9 +1,20 @@
+import { useState } from 'react';
 import {FiLink} from 'react-icons/fi'
-import Menu from '../../components/menu';
+import LinkItem from '../../components/LinkItem';
+import Menu from '../../components/Menu';
 
 import './home.css'
 
 function Home() {
+
+  const [link, setLink] = useState('');
+
+  const [showModal, setShowModal] = useState(false);
+
+  function handleShortLink(){
+    setShowModal(true);
+  }
+
   return (
     <div className="App">
       <div className="container-home">
@@ -16,12 +27,22 @@ function Home() {
               <div>
                 <FiLink size={24} color='#fff' />
                 <input
-                placeholder='Cole seu link aqui' />
+                placeholder='Cole seu link aqui' 
+                value = {link}
+                onChange={(e) => setLink(e.target.value)}
+                />
               </div>
-              <button>Encurtar Link</button>
+              <button onClick={handleShortLink}>Encurtar Link</button>
           </div>
       </div>
       <Menu />
+
+      {/* se showModal(True) modal aparece... && condicao de afirmar*/}
+      {showModal && (
+        <LinkItem 
+          closeModal = { ()=> setShowModal(false)}
+        />
+      )}
     </div>
   );
 }

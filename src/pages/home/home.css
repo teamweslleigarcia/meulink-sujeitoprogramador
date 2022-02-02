@@ -13,6 +13,10 @@
     align-items: center;
 }
 
+.area-logo img{
+    width: 80px;
+}
+
 .area-logo h1{
     font-size: 60px;
 }
