@@ -4,6 +4,7 @@ import LinkItem from '../../components/LinkItem';
 import Menu from '../../components/Menu';
 
 import api from '../../services/api'
+import { saveLink } from '../../services/storeLink'
 
 import './home.css'
 
@@ -23,6 +24,10 @@ function Home() {
 
       setData(response.data)
       setShowModal(true);
+
+      //função do services/storeLink chamada no pages/Links
+      saveLink('@encurtaLink', response.data)
+
       setLink('');
     }
     catch{
