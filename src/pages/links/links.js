@@ -14,6 +14,8 @@ function Links() {
   const [data, setData] = useState({});
   const [showModal, setShowModal] = useState(false);
 
+  const [emptyList, setEmptyList] = useState(false);
+
     useEffect(()=>{
       
       async function getLinks(){
@@ -22,6 +24,8 @@ function Links() {
         if(result.length === 0){
           //lista vazia
           console.log('lista vazia');
+
+          setEmptyList(true);
         }
 
         setMyLinks(result);
@@ -43,6 +47,7 @@ function Links() {
 
         if(result.length === 0){
           console.log('voce nao tem mais links')
+          setEmptyList(true);
         }
 
         setMyLinks(result);
@@ -56,6 +61,16 @@ function Links() {
         </Link>
         <h1>Meus Links</h1>
       </div>
+
+      {
+        emptyList && (
+          <div className='links-item'>
+            <h2 className='empty-text'> Sua lista está vazia...</h2>
+          </div>
+        )
+      }
+
+
       {
         myLinks.map( link => (
           <div key={link.id} className='links-item'>
